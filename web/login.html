@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Guard — 登录</title>
+    <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+    <main class="login-shell">
+        <section class="login-card">
+            <div class="mark">LLM · Privacy Guard</div>
+            <h1>登录</h1>
+            <p class="sub">使用访问令牌进入控制台。</p>
+            <div class="divider"></div>
+
+            <form id="login-form" novalidate>
+                <div class="form-group">
+                    <label for="authtoken">访问令牌</label>
+                    <input type="password" id="authtoken" name="authtoken" required placeholder="authtoken" autocomplete="current-password">
+                </div>
+                <button type="submit" id="login-btn">进入控制台</button>
+                <p id="error-msg" class="error"></p>
+            </form>
+
+            <p class="login-foot">© LLM Guard</p>
+        </section>
+    </main>
+    <script src="/assets/login.js"></script>
+</body>
+</html>

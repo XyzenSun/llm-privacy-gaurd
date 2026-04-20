@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Guard — 对话</title>
+    <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">
+                LLM Guard
+                <small>Privacy Console</small>
+            </div>
+
+            <button id="new-session-btn" class="btn">＋ 新建会话</button>
+
+            <h2>会话</h2>
+            <ul id="session-list"></ul>
+
+            <nav class="nav-links">
+                <a href="/index.html" class="current">对话</a>
+                <a href="/logs.html">日志</a>
+                <a href="/config.html">配置</a>
+                <a href="#" id="logout-link">退出</a>
+            </nav>
+        </aside>
+
+        <main class="chat-main">
+            <header class="page-head">
+                <h1>对话演示</h1>
+                <span class="sub">脱敏 · 云端调用 · 映射回显</span>
+            </header>
+
+            <div id="chat-window" class="chat-window"></div>
+
+            <div class="chat-input-area">
+                <textarea id="message-input" placeholder="输入消息…  （Enter 发送 / Shift + Enter 换行）" rows="3"></textarea>
+                <button id="send-btn" class="btn btn-primary">发送</button>
+            </div>
+        </main>
+
+        <aside class="debug-panel">
+            <header>
+                <h3>调试</h3>
+                <p class="panel-sub">本次请求的脱敏与映射轨迹</p>
+            </header>
+
+            <div class="debug-section">
+                <h4>脱敏前 Prompt</h4>
+                <pre id="prompt-before"></pre>
+            </div>
+            <div class="debug-section">
+                <h4>脱敏后 Prompt</h4>
+                <pre id="prompt-after"></pre>
+            </div>
+            <div class="debug-section">
+                <h4>映射表 · byPlaceholder</h4>
+                <pre id="by-placeholder"></pre>
+            </div>
+            <div class="debug-section">
+                <h4>云端响应 · Masked</h4>
+                <pre id="cloud-masked"></pre>
+            </div>
+            <div class="debug-section">
+                <h4>最终响应 · Unmasked</h4>
+                <pre id="cloud-unmasked"></pre>
+            </div>
+        </aside>
+    </div>
+    <script src="/assets/marked.min.js"></script>
+    <script src="/assets/purify.min.js"></script>
+    <script src="/assets/chat.js"></script>
+</body>
+</html>

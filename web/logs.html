@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Guard — 日志</title>
+    <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">
+                LLM Guard
+                <small>Privacy Console</small>
+            </div>
+
+            <h2>筛选</h2>
+            <div class="filter-group">
+                <label for="filter-session">会话 ID</label>
+                <input type="text" id="filter-session" placeholder="session-id">
+            </div>
+            <button id="filter-btn" class="btn">应用筛选</button>
+
+            <nav class="nav-links">
+                <a href="/index.html">对话</a>
+                <a href="/logs.html" class="current">日志</a>
+                <a href="/config.html">配置</a>
+                <a href="#" id="logout-link">退出</a>
+            </nav>
+        </aside>
+
+        <main class="logs-main">
+            <header class="page-head">
+                <h1>消息日志</h1>
+                <span class="sub">最近 50 条记录</span>
+            </header>
+
+            <div class="logs-body">
+                <table id="logs-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>会话</th>
+                            <th>轮次</th>
+                            <th>脱敏前</th>
+                            <th>脱敏后</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logs-body"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="detail-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="关闭">×</span>
+            <h3>日志详情</h3>
+            <div id="detail-content"></div>
+        </div>
+    </div>
+    <script src="/assets/logs.js"></script>
+</body>
+</html>

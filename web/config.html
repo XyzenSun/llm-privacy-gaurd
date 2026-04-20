@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Guard — 系统配置</title>
+    <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">
+                LLM Guard
+                <small>Privacy Console</small>
+            </div>
+
+            <h2>导航</h2>
+            <nav class="nav-links" style="margin-top:0;border-top:none;padding-top:0;">
+                <a href="/index.html">对话</a>
+                <a href="/logs.html">日志</a>
+                <a href="/config.html" class="current">配置</a>
+            </nav>
+
+            <div class="spacer"></div>
+
+            <nav class="nav-links">
+                <a href="#" id="logout-link">退出登录</a>
+            </nav>
+        </aside>
+
+        <main class="config-main">
+            <header class="page-head">
+                <h1>系统配置</h1>
+                <span class="sub">运行环境 · 模型 · 健康状态</span>
+            </header>
+
+            <div class="config-body">
+                <section class="config-section">
+                    <h3>数据库</h3>
+                    <div class="kv">
+                        <span>类型</span>
+                        <b id="db-type">—</b>
+                    </div>
+                    <p class="hint">APP_PORT 与 APP_PROJECT_ROOT 仅通过环境变量控制，不写入数据库。</p>
+                </section>
+
+                <form id="config-form">
+                    <section class="config-section">
+                        <h3>可信 LLM · Trusted</h3>
+
+                        <label>Provider</label>
+                        <select id="trusted-provider">
+                            <option value="openai">openai</option>
+                            <option value="openai-compatible">openai-compatible</option>
+                        </select>
+
+                        <label>Model</label>
+                        <input type="text" id="trusted-model" placeholder="claude-opus-4-7">
+
+                        <label>Base URL</label>
+                        <input type="text" id="trusted-base-url" placeholder="https://…">
+
+                        <label>System Prompt</label>
+                        <textarea id="trusted-system-prompt" rows="8" placeholder="输入 trusted llm 的 system prompt"></textarea>
+
+                        <label>API Key</label>
+                        <input type="text" id="trusted-api-key" class="mono" placeholder="sk-…">
+                        <div class="kv">
+                            <span>已设置</span>
+                            <b id="trusted-api-key-set">—</b>
+                        </div>
+                    </section>
+
+                    <section class="config-section">
+                        <h3>云端 LLM · Cloud</h3>
+
+                        <label>Provider</label>
+                        <select id="cloud-provider">
+                            <option value="openai">openai</option>
+                            <option value="openai-compatible">openai-compatible</option>
+                        </select>
+
+                        <label>Model</label>
+                        <input type="text" id="cloud-model" placeholder="gpt-4o-mini">
+
+                        <label>Base URL</label>
+                        <input type="text" id="cloud-base-url" placeholder="https://…">
+
+                        <label>API Key</label>
+                        <input type="text" id="cloud-api-key" class="mono" placeholder="sk-…">
+                        <div class="kv">
+                            <span>已设置</span>
+                            <b id="cloud-api-key-set">—</b>
+                        </div>
+                    </section>
+
+                    <section class="config-section">
+                        <div class="config-actions">
+                            <button type="submit" class="btn btn-primary">保存配置</button>
+                            <p id="save-message"></p>
+                        </div>
+                    </section>
+                </form>
+
+                <section class="config-section">
+                    <h3>健康状态</h3>
+                    <div class="kv">
+                        <span>服务</span>
+                        <b id="health-status">—</b>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="/assets/config.js"></script>
+</body>
+</html>
