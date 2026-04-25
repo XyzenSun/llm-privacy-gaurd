@@ -1,0 +1,19 @@
+services:
+  llm-privacy-guard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "19999:19999"
+    environment:
+      - APP_PORT=19999
+      - APP_AUTHTOKEN=${APP_AUTHTOKEN:-your-token-here}
+      - DB_TYPE=sqlite
+      - DB_DSN=/app/data/llm_guard.db
+      - APP_PROJECT_ROOT=/app
+    volumes:
+      - llm-privacy-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  llm-privacy-data:

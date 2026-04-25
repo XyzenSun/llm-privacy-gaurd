@@ -1,0 +1,9 @@
+.git
+.gitignore
+.env
+*.md
+*.db
+*.db-journal
+.idea
+.vscode
+*.log
