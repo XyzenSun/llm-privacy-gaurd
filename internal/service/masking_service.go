@@ -27,13 +27,13 @@ type MaskResult struct {
 
 func (s *MaskingService) Mask(sessionID, content string, knownMappings map[string]string, turnID int) (*MaskResult, error) {
 	preMasked := s.applyKnownMappings(content, knownMappings)
-
-	if s.looksFullyCovered(preMasked) {
-		return &MaskResult{
-			MaskedContent: preMasked,
-			ByPlaceholder: knownMappings,
-		}, nil
-	}
+	//禁用正则简单判断，提升效果
+	// if s.looksFullyCovered(preMasked) {
+	// 	return &MaskResult{
+	// 		MaskedContent: preMasked,
+	// 		ByPlaceholder: knownMappings,
+	// 	}, nil
+	// }
 
 	entries, err := s.trustedLLM.Detect(content, knownMappings, nil, preMasked)
 	if err != nil {
@@ -136,7 +136,7 @@ func (s *MaskingService) applyKnownMappings(content string, mappings map[string]
 	}
 	return result
 }
-
+//简易的正则判断，判断是否为邮箱、手机号、身份证号、银行卡号、IP地址，降低了识别效果，暂时废弃
 func (s *MaskingService) looksFullyCovered(content string) bool {
 	emailPattern := `[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}`
 	phonePattern := `1[3-9]\d{9}`
