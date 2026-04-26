@@ -1,5 +1,39 @@
 [English](README.md) | 中文
 
+## 快速开始
+
+使用 Docker 快速体验：
+
+```bash
+docker run -d \
+  --name llm-privacy-guard \
+  -p 19999:19999 \
+  -e APP_PORT=19999 \
+  -e APP_AUTHTOKEN=your-token-here \
+  -e DB_TYPE=sqlite \
+  -e DB_DSN=/app/data/llm_guard.db \
+  -e APP_PROJECT_ROOT=/app \
+  -v llm-privacy-data:/app/data \
+  ghcr.io/xyzensun/llm-privacy-guard:latest
+```
+
+或使用 Docker Compose：
+
+```bash
+# 下载 docker-compose.yml
+curl -O https://raw.githubusercontent.com/XyzenSun/llm-privacy-gaurd-easy-try/master/docker-compose.yml
+
+# 设置你的访问令牌
+export APP_AUTHTOKEN=your-token-here
+
+# 启动服务
+docker compose up -d
+```
+
+然后访问 http://localhost:19999/login.html，使用设置的令牌登录。
+
+**注意**：所有配置都可以通过环境变量设置，无需 `.env` 文件。
+
 ### 开发背景与初衷
 
 在我们平时使用 AI 时，许多 AI 供应商明确说明自己会把用户数据保存，或者拿去训练（有些提供商声称自己不会保存用户数据，但被脱库的数据中发现了用户的聊天记录）。

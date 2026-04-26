@@ -1,8 +1,6 @@
 services:
   llm-privacy-guard:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/xyzensun/llm-privacy-guard:latest
     ports:
       - "19999:19999"
     environment:

@@ -1,5 +1,39 @@
 English | [中文](README_zh-cn.md)
 
+## Quick Start
+
+The fastest way to experience LLM Privacy Guard is using Docker:
+
+```bash
+docker run -d \
+  --name llm-privacy-guard \
+  -p 19999:19999 \
+  -e APP_PORT=19999 \
+  -e APP_AUTHTOKEN=your-token-here \
+  -e DB_TYPE=sqlite \
+  -e DB_DSN=/app/data/llm_guard.db \
+  -e APP_PROJECT_ROOT=/app \
+  -v llm-privacy-data:/app/data \
+  ghcr.io/xyzensun/llm-privacy-guard:latest
+```
+
+Or use Docker Compose:
+
+```bash
+# Download docker-compose.yml
+curl -O https://raw.githubusercontent.com/XyzenSun/llm-privacy-gaurd-easy-try/master/docker-compose.yml
+
+# Set your auth token
+export APP_AUTHTOKEN=your-token-here
+
+# Start the service
+docker compose up -d
+```
+
+Then visit http://localhost:19999/login.html and login with your token.
+
+**Note**: All configuration can be set via environment variables. No `.env` file required.
+
 ### Background and Motivation
 
 When using AI services, many providers explicitly state that they store user data or use it for training (some providers claim they don't store user data, yet user chat logs have been found in leaked databases).
