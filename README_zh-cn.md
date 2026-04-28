@@ -47,6 +47,8 @@ docker compose up -d
 
 ## LLM Privacy Gaurd 核心设计思路
 
+### 预览
+![预览](./docs/img/preview.png)   
 
 ### 核心角色定义
 

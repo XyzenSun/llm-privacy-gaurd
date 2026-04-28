@@ -48,6 +48,10 @@ Therefore, we need a way to ensure personal data security when using LLMs. This 
 
 ## LLM Privacy Guard - Core Design Philosophy
 
+### preview
+
+![preview](./docs/img/preview.png)
+
 ### Core Role Definitions
 
 This project defines two roles:
